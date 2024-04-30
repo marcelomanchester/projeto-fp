@@ -1,5 +1,5 @@
-def adicionar():
-    receita = {
+def gerar_receita():
+    return {
         'Nome': '',
         'País': '',
         'Ingredientes': [],
@@ -7,35 +7,42 @@ def adicionar():
         'Favorito': False
     }
 
-    instrucoes = []
-
-    receita = input('Nome da receita: ')
-    pais = input('País de origem: ')
-
-    instrucoes.append('Ingredientes: ')
-
+def add_ingrediente(receita):
     while True:
-        instrucoes.append(input(
+        receita['Ingredientes'].append(input(
             'Digite os ingredientes ou [0] para começar a escrever o modo de preparo: '))
 
-        if instrucoes[-1] == '0':
-            instrucoes.pop()
+        if receita['Ingredientes'][-1] == '0':
+            receita['Ingredientes'].pop()
             break
 
-    instrucoes.append('Modo de preparo: ')
+    return receita
 
+def add_modo_de_preparo(receita):
     while True:
-        instrucoes.append(
+        receita['Modo de preparo'].append(
             input('Digite o modo de preparo ou [0] para finalizar: '))
 
-        if instrucoes[-1] == '0':
-            instrucoes.pop()
+        if receita['Modo de preparo'][-1] == '0':
+            receita['Modo de preparo'].pop()
             break
 
+    return receita
+
+def add_favorito(receita):
     favorito = input('Deseja adicionar aos favoritos? [S] ou [N]? ').upper()
+    receita['Favorito'] = (favorito == 'S')
+    return receita
 
-    if favorito == 'S':
-        favoritos[receita] = [instrucoes]
+def salvar(receita):
+    with open("./data/receitas.csv", "w") as file:
+        file.write(f'{receita["Nome"]},{receita["País"]},{receita["Ingredientes"]},{receita["Modo de preparo"]},{receita["Favorito"]}\n')
 
-    receitas[receita] = [instrucoes]
-    paises[pais] = [receita]
+def adicionar():
+    receita = gerar_receita()
+    receita['Nome'] = input('Nome da receita: ')
+    receita['País'] = input('País de origem: ')
+    receita = add_ingrediente(receita)
+    receita = add_modo_de_preparo(receita)
+    receita = add_favorito(receita)
+    salvar(receita)
