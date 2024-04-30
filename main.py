@@ -6,14 +6,15 @@ import excluir
 
 while True:
 
-    print('''MENU
+    print('''
+        MENU
         0 - Sair
         1 - Adicionar
         2 - Visualizar
         3 - Atualizar
         4 - Excluir
         5 - Sugerir
-        ''')
+    ''')
 
     acao = int(input('Bem-vindo Rafael! Digite o que deseja: '))
 
@@ -22,14 +23,14 @@ while True:
     if acao == 0:
         break
     elif acao == 1:
-
+        adicionar.adicionar()
     elif acao == 2:
-
+        print('')
     elif acao == 3:
-
+        print('')
     elif acao == 4:
-
+        print('')
     elif acao == 5:
-
+        print('')
     else:
         print('Número inválido.')
