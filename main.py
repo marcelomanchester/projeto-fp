@@ -26,6 +26,7 @@ while True:
   elif acao == 1:
     adicionar.adicionar()
   elif acao == 2:
+    visualizar.visualizar()
     print('')
   elif acao == 3:
     print('')
