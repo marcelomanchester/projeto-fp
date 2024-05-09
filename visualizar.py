@@ -1,9 +1,33 @@
+import adicionar
 def visualizar():
-    resposta=input('você deseja visualizar essa planilha: ')
-    if resposta=='s':
-        file=open("./data/receitas.csv",'r')
-        print(file.read())
-        file.close()
-        resposta=input('pressione qualquer tecla para sair ')
-    else:
-        print('')
+    while True:
+        resposta=input('Deseja ver as receitas: se sim [s] se não [n]: ').lower()
+        receitas = []
+        if resposta=='s':
+            with open("./data/receitas.csv", "r") as file:
+                lista=file.readlines()
+            for linha in lista:
+                lista = linha.split(',')
+                receitas.append(set_receita(lista))          
+        else:
+            break
+        
+        
+
+def set_receita(lista):
+    cont=0
+    receita=adicionar.gerar_receita()
+    for key in receita.keys():
+        receita[key]=lista[cont]
+        cont+=1
+    print(receita)
+    return receita
+
+
+
+        
+
+        
+
+
+
