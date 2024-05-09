@@ -20,8 +20,11 @@ def set_receita(lista):
     for key in receita.keys():
         receita[key]=lista[cont]
         cont+=1
-    print(receita)
+        for linha in receita:
+            print(f'{linha}\t {lista[cont-1]}')
     return receita
+
+
 
 
 
