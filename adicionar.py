@@ -7,6 +7,7 @@ def gerar_receita():
         'Favorito': False
     }
 
+
 def add_ingrediente(receita):
     while True:
         receita['Ingredientes'].append(input(
@@ -17,6 +18,7 @@ def add_ingrediente(receita):
             break
 
     return receita
+
 
 def add_modo_de_preparo(receita):
     while True:
@@ -29,14 +31,23 @@ def add_modo_de_preparo(receita):
 
     return receita
 
+
 def add_favorito(receita):
-    favorito = input('Deseja adicionar aos favoritos? [S] ou [N]? ').upper()
-    receita['Favorito'] = (favorito == 'S')
-    return receita
+    while True:
+        try:
+            favorito = input('Deseja adicionar aos favoritos? [S] ou [N]? ').upper()
+            receita['Favorito'] = (favorito == 'S')
+            return receita
+            break
+        except ValueError:
+            print()
+
 
 def salvar(receita):
-    with open("./data/receitas.csv", "w") as file:
-        file.write(f'{receita["Nome"]},{receita["País"]},{'#'.join(receita["Ingredientes"])},{'#'.join(receita["Modo de preparo"])},{receita["Favorito"]}\n')
+    with open("./data/receitas.csv", "a") as file:
+        file.write(f'{receita["Nome"]}, {receita["País"]}, {';'.join(receita["Ingredientes"])}, {
+                   ';'.join(receita["Modo de preparo"])}, {receita["Favorito"]}\n')
+
 
 def adicionar():
     receita = gerar_receita()

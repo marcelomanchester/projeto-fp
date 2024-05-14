@@ -28,13 +28,12 @@ while True:
             adicionar.adicionar()
         elif acao == 2:
             visualizar.visualizar()
-            print('')
         elif acao == 3:
-            print('')
+            print()
         elif acao == 4:
-            print('')
+            print()
         elif acao == 5:
-            print('')
+            print()
 
     except ValueError:
         print()
