@@ -1,3 +1,31 @@
+def atualizar_ingredientes():
+    ingredientes = []
+
+    while True:
+        ingredientes.append(input(
+            'Digite os novos ingredientes ou [B] finalizar: '))
+
+        if ingredientes[-1] == 'B':
+            ingredientes.pop()
+            break
+
+    return ';'.join(ingredientes)
+
+
+def atualizar_preparo():
+    preparo = []
+
+    while True:
+        preparo.append(input(
+            'Digite o novo modo de preparo ou [B] finalizar: '))
+
+        if preparo[-1] == 'B':
+            preparo.pop()
+            break
+
+    return ';'.join(preparo)
+
+
 def atualizacao(receita):
     while True:
         atualizacao = input(
@@ -13,10 +41,10 @@ def atualizacao(receita):
                 novo_pais = input('Substituição: ')
                 receita[1] = novo_pais
             elif atualizacao == 'I':
-                novo_ingrediente = input('Substituição: ')
+                novo_ingrediente = atualizar_ingredientes()
                 receita[2] = novo_ingrediente
             elif atualizacao == 'M':
-                novo_preparo = input('Substituição: ')
+                novo_preparo = atualizar_preparo()
                 receita[3] = novo_preparo
             elif atualizacao == 'F':
                 while True:
@@ -33,7 +61,8 @@ def atualizacao(receita):
                         print('Caractere inválido')
         else:
             print('Caractere inválido')
-        return f'{receita[0]}, {receita[1]}, {receita[2]}, {receita[3]}, {receita[4]}\n'
+
+    return f'{receita[0]}, {receita[1]}, {receita[2]}, {receita[3]}, {receita[4]}\n'
 
 
 def atualizar():
