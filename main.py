@@ -3,6 +3,7 @@ import adicionar
 import visualizar
 import atualizar
 import excluir
+import sugerir
 
 while True:
     os.system('cls')
