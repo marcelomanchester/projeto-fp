@@ -3,6 +3,7 @@ import adicionar
 import visualizar
 import atualizar
 import excluir
+import sugerir
 
 while True:
     os.system('cls')
@@ -29,7 +30,7 @@ while True:
         elif acao == 2:
             visualizar.visualizar()
         elif acao == 3:
-            print()
+            atualizar.atualizar()
         elif acao == 4:
             excluir.excluir()
         elif acao == 5:
