@@ -30,7 +30,7 @@ while True:
         elif acao == 2:
             visualizar.visualizar()
         elif acao == 3:
-            print()
+            atualizar.atualizar()
         elif acao == 4:
             print()
         elif acao == 5:
