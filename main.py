@@ -15,7 +15,7 @@ def clear():
 
 while True:
 
-    clear()
+    #clear()
 
     print('''
     MENU
@@ -30,7 +30,7 @@ while True:
     try:
         acao = int(input('Bem-vindo Rafael! Digite o que deseja: '))
 
-        clear()
+        #clear()
 
         if acao == 0:
             break

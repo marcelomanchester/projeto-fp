@@ -33,7 +33,7 @@ def atualizacao(receita):
                         print('Caractere inválido')
         else:
             print('Caractere inválido')
-        return f'{receita[0]}, {receita[1]}, {';'.join(receita[2])}, {';'.join(receita[3])}, {receita[4]}\n'
+        return f'{receita[0]}, {receita[1]}, {receita[2]}, {receita[3]}, {receita[4]}\n'
 
 
 def atualizar():
@@ -42,15 +42,14 @@ def atualizar():
 
     nome = input('Digite a receita que você deseja atualizar: ')
 
-    for index, receita in receitas:
+    for index, receita in enumerate(receitas):
         receita_array = receita.split(',')
 
         if receita_array[0] == nome:
             receita_atualizada = atualizacao(receita_array)
             receitas[index] = receita_atualizada
-            break
-
     file.close()
 
     file = open("./data/receitas.csv", "w")
-    file.writelines(f'{receita},')
+    file.writelines(receitas)
+    file.close()
