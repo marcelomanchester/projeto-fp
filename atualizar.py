@@ -1,7 +1,11 @@
 def atualizar():
-    file=open("./data/receitas.csv", "r")
+    receitas = open("./data/receitas.csv", "r")
 
-    for linha in file:
-        print(linha)
+    nome = input('Digite a receita que você deseja atualizar: ')
 
-        
+    for receita in receitas:
+        if receita['Nome'] == nome:
+            atualizacao = input(
+                'O que você deseja atualizar? Nome [N], País [P], Ingredientes [I], Modo de Preparo [M], Favorito [F]: ')
+
+    receitas.close()
