@@ -17,4 +17,3 @@ def excluir():
     file2 = open("./data/receitas.csv", "w")
     file2.writelines(lines)
     file2.close()
-            

@@ -69,16 +69,31 @@ def atualizar():
     file = open("./data/receitas.csv", "r")
     receitas = file.readlines()
 
-    nome = input('Digite a receita que você deseja atualizar: ')
+    cont = 0
 
-    for index, receita in enumerate(receitas):
-        receita_array = receita.split(',')
+    while True:
 
-        if receita_array[0] == nome:
-            receita_atualizada = atualizacao(receita_array)
-            receitas[index] = receita_atualizada
-    file.close()
+        nome = input('Digite a receita que você deseja atualizar: ')
 
-    file = open("./data/receitas.csv", "w")
-    file.writelines(receitas)
-    file.close()
+        for index, receita in enumerate(receitas):
+            receita_array = receita.split(',')
+
+            if receita_array[0] == nome:
+                receita_atualizada = atualizacao(receita_array)
+                receitas[index] = receita_atualizada
+                file.close()
+
+                file = open("./data/receitas.csv", "w")
+                file.writelines(receitas)
+                file.close()
+
+                cont = 0
+                break
+            else:
+                cont += 1
+
+        if cont != 0:
+            print('Digite uma receita válida!')
+            continue
+        else:
+            break
