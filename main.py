@@ -16,7 +16,7 @@ while True:
     4 - Excluir
     5 - Sugerir
   ''')
-    
+
     try:
         acao = int(input('Bem-vindo Rafael! Digite o que deseja: '))
 
@@ -31,7 +31,7 @@ while True:
         elif acao == 3:
             print()
         elif acao == 4:
-            print()
+            excluir.excluir()
         elif acao == 5:
             print()
 
