@@ -54,7 +54,7 @@ def descrever(receitas):
 def filtrar_receita(filter_type, filter):
     receitas = []
 
-    with open("./data/receitas.csv", "r") as file:
+    with open('./data/receitas.csv', 'r') as file:
         lista = file.readlines()
 
     for linha in lista:

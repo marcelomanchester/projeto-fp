@@ -1,5 +1,5 @@
 def excluir():
-    file = open("./data/receitas.csv", "r")
+    file = open('./data/receitas.csv', 'r')
     lines = file.readlines()
 
     apagar = input('Digite o nome da receita que você deseja excluir: ')
@@ -18,6 +18,6 @@ def excluir():
 
     file.close()
 
-    file2 = open("./data/receitas.csv", "w")
+    file2 = open('./data/receitas.csv', 'w')
     file2.writelines(lines)
     file2.close()
