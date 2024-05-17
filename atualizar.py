@@ -66,7 +66,7 @@ def atualizacao(receita):
 
 
 def atualizar():
-    file = open('./data/receitas.csv', 'r')
+    file = open('./data/receitas.csv', 'r', encoding = 'utf8')
     receitas = file.readlines()
 
     cont = 0
@@ -76,14 +76,14 @@ def atualizar():
         nome = input('Digite a receita que você deseja atualizar: ')
 
         for index, receita in enumerate(receitas):
-            receita_array = receita.split(',')
+            receita_array = receita.split('@')
 
             if receita_array[0] == nome:
                 receita_atualizada = atualizacao(receita_array)
                 receitas[index] = receita_atualizada
                 file.close()
 
-                file = open('./data/receitas.csv', 'w')
+                file = open('./data/receitas.csv', 'w', encoding = 'utf8')
                 file.writelines(receitas)
                 file.close()
 

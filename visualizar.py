@@ -54,11 +54,11 @@ def descrever(receitas):
 def filtrar_receita(filter_type, filter):
     receitas = []
 
-    with open('./data/receitas.csv', 'r') as file:
+    with open('./data/receitas.csv', 'r', encoding = 'utf8') as file:
         lista = file.readlines()
 
     for linha in lista:
-        lista = linha.split(',')
+        lista = linha.split('@')
         print('Receitas filtradas:')
 
         if (filter_type == 'COUNTRY' and lista[1].strip() == filter.strip()) or (filter_type == 'FAVORITES' and lista[4].strip() == 'True') or (filter_type == 'ALL'):

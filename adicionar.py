@@ -45,9 +45,9 @@ def add_favorito(receita):
 
 
 def salvar(receita):
-    with open('./data/receitas.csv', 'a') as file:
-        file.write(f'{receita['Nome']}, {receita['País']}, {';'.join(receita['Ingredientes'])}, {
-                   ';'.join(receita['Modo de preparo'])}, {receita['Favorito']}\n')
+    with open('./data/receitas.csv', 'a', encoding = 'utf8') as file:
+        file.write(f'{receita['Nome']}@ {receita['País']}@ {';'.join(receita['Ingredientes'])}@ {
+                   ';'.join(receita['Modo de preparo'])}@ {receita['Favorito']}\n')
 
 
 def adicionar():
