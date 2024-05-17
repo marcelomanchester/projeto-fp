@@ -48,6 +48,8 @@ while True:
             excluir.excluir()
         elif acao == 5:
             sugerir.sugestao()
+        elif acao == 6:
+            avaliar.avaliacao()
 
     except ValueError:
         print()

@@ -4,7 +4,8 @@ def gerar_receita():
         'País': '',
         'Ingredientes': [],
         'Modo de preparo': [],
-        'Favorito': False
+        'Favorito': False,
+        'avaliacao': 0
     }
 
 
@@ -47,7 +48,7 @@ def add_favorito(receita):
 def salvar(receita):
     with open('./data/receitas.csv', 'a', encoding = 'utf8') as file:
         file.write(f'{receita['Nome']}@ {receita['País']}@ {';'.join(receita['Ingredientes'])}@ {
-                   ';'.join(receita['Modo de preparo'])}@ {receita['Favorito']}\n')
+                   ';'.join(receita['Modo de preparo'])}@ {receita['Favorito']}@ {receita['avaliacao']}\n')
 
 
 def adicionar():
