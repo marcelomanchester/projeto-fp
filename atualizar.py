@@ -66,7 +66,7 @@ def atualizacao(receita):
 
 
 def atualizar():
-    file = open("./data/receitas.csv", "r")
+    file = open('./data/receitas.csv', 'r')
     receitas = file.readlines()
 
     cont = 0
@@ -83,7 +83,7 @@ def atualizar():
                 receitas[index] = receita_atualizada
                 file.close()
 
-                file = open("./data/receitas.csv", "w")
+                file = open('./data/receitas.csv', 'w')
                 file.writelines(receitas)
                 file.close()
 

@@ -45,7 +45,7 @@ while True:
         elif acao == 4:
             excluir.excluir()
         elif acao == 5:
-            print()
+            sugerir.()
 
     except ValueError:
         print()
