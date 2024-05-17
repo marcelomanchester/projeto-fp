@@ -5,6 +5,7 @@ import visualizar
 import atualizar
 import excluir
 import sugerir
+import avaliar
 
 
 def clear():
@@ -27,6 +28,7 @@ while True:
     3 - Atualizar
     4 - Excluir
     5 - Sugerir
+    6 - Avaliar
   ''')
 
     try:
