@@ -3,9 +3,9 @@ def atualizar_ingredientes():
 
     while True:
         ingredientes.append(input(
-            'Digite os novos ingredientes ou [B] finalizar: ').upper())
+            'Digite os novos ingredientes ou [0] para finalizar: ').upper())
 
-        if ingredientes[-1] == 'B':
+        if ingredientes[-1] == '0':
             ingredientes.pop()
             break
 
@@ -17,9 +17,9 @@ def atualizar_preparo():
 
     while True:
         preparo.append(input(
-            'Digite o novo modo de preparo ou [B] finalizar: ').upper())
+            'Digite o novo modo de preparo ou [0] para finalizar: ').upper())
 
-        if preparo[-1] == 'B':
+        if preparo[-1] == '0':
             preparo.pop()
             break
 
@@ -29,10 +29,10 @@ def atualizar_preparo():
 def atualizacao(receita):
     while True:
         atualizacao = input(
-            'O que você deseja atualizar? Nome [N], País [P], Ingredientes [I], Modo de Preparo [M], Favorito [F] ou Finalizar atualização [B]: ').upper()
+            'O que você deseja atualizar? Nome [N], País [P], Ingredientes [I], Modo de Preparo [M], Favorito [F] ou Finalizar atualização [0]: ').upper()
 
-        if atualizacao == 'N' or atualizacao == 'P' or atualizacao == 'I' or atualizacao == 'M' or atualizacao == 'F' or atualizacao == 'B':
-            if atualizacao == 'B':
+        if atualizacao == 'N' or atualizacao == 'P' or atualizacao == 'I' or atualizacao == 'M' or atualizacao == 'F' or atualizacao == '0':
+            if atualizacao == '0':
                 break
             elif atualizacao == 'N':
                 novo_nome = input('Substituição: ')
@@ -58,15 +58,15 @@ def atualizacao(receita):
                             receita[4] = False
                             break
                     else:
-                        print('Caractere inválido')
+                        print('Caractere inválido!')
         else:
             print('Caractere inválido')
 
-    return f'{receita[0]}@ {receita[1]}@ {receita[2]}@ {receita[3]}@ {receita[4]}\n'
+    return f'{receita[0]}@ {receita[1]}@ {receita[2]}@ {receita[3]}@ {receita[4]}@ {receita[5]}\n'
 
 
 def atualizar():
-    file = open('./data/receitas.csv', 'r', encoding = 'utf8')
+    file = open('./data/receitas.csv', 'r', encoding='utf8')
     receitas = file.readlines()
 
     cont = 0
@@ -83,7 +83,7 @@ def atualizar():
                 receitas[index] = receita_atualizada
                 file.close()
 
-                file = open('./data/receitas.csv', 'w', encoding = 'utf8')
+                file = open('./data/receitas.csv', 'w', encoding='utf8')
                 file.writelines(receitas)
                 file.close()
 

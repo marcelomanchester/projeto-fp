@@ -7,18 +7,17 @@ import excluir
 import sugerir
 import avaliar
 
-
 def clear():
     sys = platform.system()
+
     if sys == 'Darwin':
         os.system('clear')
     else:
         os.system('cls')
 
-
 while True:
 
-    # clear()
+    clear()
 
     print('''
     MENU
@@ -34,7 +33,7 @@ while True:
     try:
         acao = int(input('Bem-vindo! Digite o que deseja: '))
 
-        # clear()
+        clear()
 
         if acao == 0:
             break
