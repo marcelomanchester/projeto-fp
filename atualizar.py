@@ -3,7 +3,7 @@ def atualizar_ingredientes():
 
     while True:
         ingredientes.append(input(
-            'Digite os novos ingredientes ou [B] finalizar: '))
+            'Digite os novos ingredientes ou [B] finalizar: ').upper())
 
         if ingredientes[-1] == 'B':
             ingredientes.pop()
@@ -17,7 +17,7 @@ def atualizar_preparo():
 
     while True:
         preparo.append(input(
-            'Digite o novo modo de preparo ou [B] finalizar: '))
+            'Digite o novo modo de preparo ou [B] finalizar: ').upper())
 
         if preparo[-1] == 'B':
             preparo.pop()

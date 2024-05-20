@@ -32,7 +32,7 @@ while True:
   ''')
 
     try:
-        acao = int(input('Bem-vindo Rafael! Digite o que deseja: '))
+        acao = int(input('Bem-vindo! Digite o que deseja: '))
 
         # clear()
 
