@@ -1,5 +1,6 @@
 import adicionar
-
+import os
+import platform
 
 def set_receita(lista):
     cont = 0
@@ -16,31 +17,40 @@ def skip():
     print('Digite um valor válido!')
     return 'RESTART', ''
 
+def clear():
+    sys = platform.system()
+
+    if sys == 'Darwin':
+        os.system('clear')
+    else:
+        os.system('cls')
+
 
 def set_filter():
     try:
         option = int(input(
             'Digite como você deseja visualizar:\n 0 - Voltar ao menu \n 1 - Todos\n 2 - Filtrar por país\n 3 - Mostrar favoritos\n 4 - Filtrar por avaliação\n'))
+    
+        if not option:
+            raise ValueError
+        elif option == 0:
+            return 'EXIT', ''
+        elif option == 1:
+            return 'ALL', ''
+        elif option == 2:
+            country = input('Informe o nome do país que voce deseja filtrar:\n')
+            return 'COUNTRY', country
+        elif option == 3:
+            return 'FAVORITES', ''
+        elif option == 4:
+            ranking = input(
+                'Informe o nível de avaliação que voce deseja filtrar:\n 1 - * \n 2 - ** \n 3 - *** \n 4 - **** \n 5 - *****\n')
+            return 'RANKING', ranking
+        else:
+            raise ValueError
     except ValueError:
-        skip()
-
-    if option == 0:
-        return 'EXIT', ''
-    elif option == 1:
-        print('here')
-        return 'ALL', ''
-    elif option == 2:
-        country = input('Informe o nome do país que voce deseja filtrar:\n')
-        return 'COUNTRY', country
-    elif option == 3:
-        return 'FAVORITES', ''
-    elif option == 4:
-        ranking = input(
-            'Informe o nível de avaliação que voce deseja filtrar:\n 1 - * \n 2 - ** \n 3 - *** \n 4 - **** \n 5 - *****\n')
-        return 'RANKING', ranking
-    else:
-        skip()
-
+        clear()
+        return skip()
 
 def descrever(receitas):
     name = input('Digite o nome da receita que voce quer visualizar:\n')
