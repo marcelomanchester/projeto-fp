@@ -2,6 +2,7 @@ import adicionar
 import os
 import platform
 
+
 def set_receita(lista):
     cont = 0
     receita = adicionar.gerar_receita()
@@ -17,6 +18,7 @@ def skip():
     print('Digite um valor válido!')
     return 'RESTART', ''
 
+
 def clear():
     sys = platform.system()
 
@@ -30,15 +32,16 @@ def set_filter():
     try:
         option = int(input(
             'Digite como você deseja visualizar:\n 0 - Voltar ao menu \n 1 - Todos\n 2 - Filtrar por país\n 3 - Mostrar favoritos\n 4 - Filtrar por avaliação\n'))
-    
-        if not option:
+
+        if option == None:
             raise ValueError
         elif option == 0:
             return 'EXIT', ''
         elif option == 1:
             return 'ALL', ''
         elif option == 2:
-            country = input('Informe o nome do país que voce deseja filtrar:\n')
+            country = input(
+                'Informe o nome do país que voce deseja filtrar:\n')
             return 'COUNTRY', country
         elif option == 3:
             return 'FAVORITES', ''
@@ -51,6 +54,7 @@ def set_filter():
     except ValueError:
         clear()
         return skip()
+
 
 def descrever(receitas):
     name = input('Digite o nome da receita que voce quer visualizar:\n')
@@ -65,13 +69,24 @@ def descrever(receitas):
         count += 1
 
     if receita == None:
-        print('\nReceita nao encontrada.\n')
+        print('\nReceita não encontrada.\n')
     else:
         for key in receita.keys():
             output = f' {key}: \n'
 
             for item in receita[key].split(';'):
-                output += f' - {item.strip()}\n'
+                if key == 'Favorito':
+                    if item.strip() == 'True':
+                        output += '- Sim\n'
+                    else:
+                        output += '- Não\n'
+                elif key == 'Avaliação':
+                    if item.strip() == '0':
+                        output += '- Receita não avaliada\n'
+                    else:
+                        output += f' - {item.strip()}\n'
+                else:
+                    output += f' - {item.strip()}\n'
 
             print(output)
 
@@ -79,7 +94,7 @@ def descrever(receitas):
 def filtrar_receita(filter_type, filter):
     receitas = []
 
-    with open('./data/receitas.csv', 'r') as file:
+    with open('./data/receitas.csv', 'r', encoding='utf8') as file:
         lista = file.readlines()
 
         for linha in lista:
@@ -99,6 +114,10 @@ def visualizar():
     while True:
         filter_type, filter = set_filter()
 
+        if filter_type == 'RANKING' and filter == '0':
+            print('Digite um filtro válido!')
+            continue
+
         if filter_type == 'EXIT':
             break
 
@@ -106,7 +125,7 @@ def visualizar():
             continue
 
         receitas = filtrar_receita(filter_type, filter)
-        
+
         if len(receitas) == 0:
             print('Nenhuma receita foi encontrada!')
             continue

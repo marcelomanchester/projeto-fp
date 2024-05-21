@@ -33,6 +33,7 @@ def excluir():
                         continue
             else:
                 lines.pop(index_deletar)
+                print('Receita excluída!')
 
             if cont != 0:
                 break

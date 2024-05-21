@@ -60,7 +60,7 @@ def atualizacao(receita):
                     else:
                         print('Caractere inválido!')
         else:
-            print('Caractere inválido')
+            print('Caractere inválido!')
 
     return f'{receita[0]}@ {receita[1]}@ {receita[2]}@ {receita[3]}@ {receita[4]}@ {receita[5]}\n'
 

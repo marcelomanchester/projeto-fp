@@ -59,5 +59,6 @@ while True:
         clear()
         print('Informe um valor válido!')
     except KeyboardInterrupt:
+        clear()
         print('\nAté logo!\n')
         break

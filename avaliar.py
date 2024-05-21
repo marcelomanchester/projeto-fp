@@ -19,7 +19,7 @@ def estrelas(receita):
 
 
 def avaliacao():
-    file = open('./data/receitas.csv', 'r', encoding = 'utf8')
+    file = open('./data/receitas.csv', 'r', encoding='utf8')
     receitas = file.readlines()
 
     cont = 0
@@ -36,7 +36,7 @@ def avaliacao():
                 receitas[index] = receita_avaliada
                 file.close()
 
-                file = open('./data/receitas.csv', 'w', encoding = 'utf8')
+                file = open('./data/receitas.csv', 'w', encoding='utf8')
                 file.writelines(receitas)
                 file.close()
 
