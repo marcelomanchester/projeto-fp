@@ -19,11 +19,11 @@ def skip():
 
 def set_filter():
     try:
-        option = int(input('Digite como você deseja visualizar:\n 0 - Voltar ao menu \n 1 - Todos\n 2 - Filtrar por país\n 3 - Mostrar favoritos\n 4 - Filtrar por avaliação\n'))
+        option = int(input(
+            'Digite como você deseja visualizar:\n 0 - Voltar ao menu \n 1 - Todos\n 2 - Filtrar por país\n 3 - Mostrar favoritos\n 4 - Filtrar por avaliação\n'))
     except ValueError:
-        print('Informe um valor válido!')
         skip()
-    
+
     if option == 0:
         return 'EXIT', ''
     elif option == 1:
@@ -35,7 +35,8 @@ def set_filter():
     elif option == 3:
         return 'FAVORITES', ''
     elif option == 4:
-        ranking = input('Informe o nível de avaliação que voce deseja filtrar:\n 1 - * \n 2 - ** \n 3 - *** \n 4 - **** \n 5 - *****\n')
+        ranking = input(
+            'Informe o nível de avaliação que voce deseja filtrar:\n 1 - * \n 2 - ** \n 3 - *** \n 4 - **** \n 5 - *****\n')
         return 'RANKING', ranking
     else:
         skip()
@@ -58,6 +59,7 @@ def descrever(receitas):
     else:
         for key in receita.keys():
             output = f' {key}: \n'
+
             for item in receita[key].split(';'):
                 output += f' - {item.strip()}\n'
 
@@ -69,10 +71,14 @@ def filtrar_receita(filter_type, filter):
 
     with open('./data/receitas.csv', 'r') as file:
         lista = file.readlines()
+
         for linha in lista:
-            if linha == '\n': continue
+            if linha == '\n':
+                continue
+
             lista = linha.split('@')
-            if (filter_type == 'COUNTRY' and lista[1].strip() == filter.strip()) or (filter_type == 'FAVORITES' and lista[4].strip() == 'True')or (filter_type == 'ALL') or (filter_type == 'RANKING' and lista[5].strip() == filter):
+
+            if (filter_type == 'COUNTRY' and lista[1].strip() == filter.strip()) or (filter_type == 'FAVORITES' and lista[4].strip() == 'True') or (filter_type == 'ALL') or (filter_type == 'RANKING' and lista[5].strip() == filter):
                 print(f' -  {lista[0]}')
                 receitas.append(set_receita(lista))
 
@@ -82,6 +88,7 @@ def filtrar_receita(filter_type, filter):
 def visualizar():
     while True:
         filter_type, filter = set_filter()
+
         if filter_type == 'EXIT':
             break
 
@@ -89,6 +96,7 @@ def visualizar():
             continue
 
         receitas = filtrar_receita(filter_type, filter)
+        
         if len(receitas) == 0:
             print('Nenhuma receita foi encontrada!')
             continue

@@ -9,26 +9,27 @@ def gerar_receita():
     }
 
 
-def add_ingrediente(receita):
+def validar_input(receita, chave, mensagem_input):
     while True:
-        receita['Ingredientes'].append(input(
-            'Digite os ingredientes ou [0] para começar a escrever o modo de preparo: '))
+        nome = input(mensagem_input).strip()
 
-        if receita['Ingredientes'][-1] == '0':
-            receita['Ingredientes'].pop()
+        if nome != '':
+            receita[chave] = nome
             break
+        else:
+            print(f'Digite um {chave} válido!')
 
-    return receita
 
-
-def add_modo_de_preparo(receita):
+def add_list_item(receita, chave, mensagem_input, mensagem_erro):
     while True:
-        receita['Modo de preparo'].append(
-            input('Digite o modo de preparo ou [0] para finalizar: '))
+        item = input(mensagem_input).strip()
 
-        if receita['Modo de preparo'][-1] == '0':
-            receita['Modo de preparo'].pop()
+        if item == '0':
             break
+        elif item != '':
+            receita[chave].append(item)
+        else:
+            print(mensagem_erro)
 
     return receita
 
@@ -53,14 +54,20 @@ def add_favorito(receita):
 
 def salvar(receita):
     with open('./data/receitas.csv', 'a', encoding='utf8') as file:
-        file.write(f'{receita["Nome"]}@{receita["País"]}@{";".join(receita["Ingredientes"])}@{";".join(receita["Modo de preparo"])}@{receita["Favorito"]}@{receita["Avaliação"]}\n')
+        file.write(f'{receita['Nome']}@{receita['País']}@{';'.join(receita['Ingredientes'])}@{
+                   ';'.join(receita['Modo de preparo'])}@{receita['Favorito']}@{receita['Avaliação']}\n')
 
 
 def adicionar():
     receita = gerar_receita()
-    receita['Nome'] = input('Nome da receita: ')
-    receita['País'] = input('País de origem: ')
-    receita = add_ingrediente(receita)
-    receita = add_modo_de_preparo(receita)
+
+    validar_input(receita, 'Nome', 'Digite o nome: ')
+    validar_input(receita, 'País', 'Digite o país: ')
+
+    receita = add_list_item(
+        receita, 'Ingredientes', 'Digite um ingrediente ou [0] para finalizar: ', 'Digite um ingrediente válido!')
+    receita = add_list_item(receita, 'Modo de preparo',
+                            'Digite o modo de preparo ou [0] para finalizar: ', 'Digite um modo de preparo válido!')
+    
     receita = add_favorito(receita)
     salvar(receita)

@@ -7,6 +7,7 @@ import excluir
 import sugerir
 import avaliar
 
+
 def clear():
     sys = platform.system()
 
@@ -15,8 +16,8 @@ def clear():
     else:
         os.system('cls')
 
-while True:
 
+while True:
     print('''
     MENU
     0 - Sair
@@ -60,4 +61,3 @@ while True:
     except KeyboardInterrupt:
         print('\nAté logo!\n')
         break
-    
