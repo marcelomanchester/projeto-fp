@@ -17,8 +17,6 @@ def clear():
 
 while True:
 
-    clear()
-
     print('''
     MENU
     0 - Sair
@@ -33,22 +31,33 @@ while True:
     try:
         acao = int(input('Bem-vindo! Digite o que deseja: '))
 
-        clear()
-
         if acao == 0:
             break
         elif acao == 1:
             adicionar.adicionar()
+            clear()
         elif acao == 2:
             visualizar.visualizar()
+            clear()
         elif acao == 3:
             atualizar.atualizar()
+            clear()
         elif acao == 4:
             excluir.excluir()
+            clear()
         elif acao == 5:
             sugerir.sugestao()
+            clear()
         elif acao == 6:
             avaliar.avaliacao()
+            clear()
+        else:
+            raise ValueError
 
     except ValueError:
-        print()
+        clear()
+        print('Informe um valor válido!')
+    except KeyboardInterrupt:
+        print('\nAté logo!\n')
+        break
+    
