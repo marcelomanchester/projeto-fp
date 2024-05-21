@@ -67,3 +67,6 @@ Ao digitar 5 no menu principal o sistema sugere uma receita aleatória, que apó
 Também é possível avaliar suas receitas digitando 6 no menu principal.
 
 Ao digitar 6 é perguntado qual receita o usuário deseja atualizar, basta digitar o nome da receita e depois dar sua nota. Com isso, é possível visualizar as receitas por nota no menu Visualizar.
+
+# Fluxograma
+![Fluxograma do sistema](assets/fluxograma.png)
